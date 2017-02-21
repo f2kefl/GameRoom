@@ -23,21 +23,28 @@ class Controller {
         makeToys();
     }
 
+
     //создаем игрушки для каждого ребенка
     private void makeToys(){
         Child[] children = inviteChildren();
         for (Child aChild : children) {
-            int sum = 0;
             int moneyForChild = MONEY / INVITEES_NUMBER;
+            int sum = 0;
             while (moneyForChild > sum) {
                 Toy toy = getRandomToy(aChild.ageGroup);
                 sum += toy.cost;
-                if (moneyForChild >=sum) {
+                if (moneyForChild >= sum) {
                     toys.add(toy);
                     used_sum += toy.cost;
                 }
             }
-            sum = 0;
+        }
+        while (used_sum <= MONEY){
+            Toy toy = getRandomToy(getRandomSize());
+            if (used_sum + toy.cost <= MONEY){
+                used_sum += toy.cost;
+                toys.add(toy);
+            } else break;
         }
     }
 
