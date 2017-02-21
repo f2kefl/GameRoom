@@ -36,7 +36,7 @@ public class Main {
             if (in == 1) costSorter.sortByCost(toys);
             else if (in == 2) nameSorter.sortByName(toys);
             else System.out.println("Incorrect input");
-        } catch (IOException e) {
+        } catch (IOException | NumberFormatException e) {
             System.out.println("Incorrect input!");
         }
     }

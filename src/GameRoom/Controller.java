@@ -65,8 +65,11 @@ class Controller {
     // создаем детей
     private Child[] inviteChildren(){
         Child[] children = new Child[INVITEES_NUMBER];
-        for (int i = 0; i < children.length; i++) {
-            children[i] = new Child(getRandomSize());
+        int a = INVITEES_NUMBER / 3;
+        for (int i = 0; i < a; i++) {
+            children[i] = new Child(Size.small);
+            children[i+a] = new Child(Size.medium);
+            children[i+(a*2)] = new Child(Size.large);
         }
         return children;
     }
